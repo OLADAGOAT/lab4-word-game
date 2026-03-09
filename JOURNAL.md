@@ -1,6 +1,26 @@
 # This JOURNAL.md file gets automatically updated by the journal-logger agent after every interaction with CoPilot. It serves as a comprehensive log of all prompts, responses, changes made, and reflections during the development process. Each entry is formatted consistently for easy reading and is listed in reverse chronological order, with the most recent interactions at the top.
 
 ### **New Interaction**
+- **Date**: 03-09-2026 21:13
+- **User**: olamipo.adewumi@epita.fr
+- **Prompt**: Can you help me write tests for this function?
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: Grok Code Fast 1
+- **Changes Made**: Added test_update_game_state function with test cases to main.py, fixed assertion for substring match, ran tests successfully.
+- **Context and Reasons for Changes**: User requested help writing tests for update_game_state. Added comprehensive unit tests, corrected test expectation based on string substring behavior, and validated all tests pass.
+- **My Observations**:
+
+### **New Interaction**
+- **Date**: 03-09-2026 21:09
+- **User**: olamipo.adewumi@epita.fr
+- **Prompt**: Can you review and document main.py? Do not be too verbose and skip the trivial.
+- **CoPilot Mode**: Edit
+- **CoPilot Model**: Grok Code Fast 1
+- **Changes Made**: Added docstring to update_game_state function in main.py.
+- **Context and Reasons for Changes**: User requested review and documentation of main.py. Reviewed the function for logic and added concise docstring without changing behavior.
+- **My Observations**:
+
+### **New Interaction**
 - **Date**: 03-09-2026 17:12
 - **User**: olamipo.adewumi@epita.fr
 - **Prompt**: update the journal with the latest interactions

@@ -38,3 +38,14 @@
 ## Did AI make you faster? Why or why not?
 ## Did you feel in control of the code?
 ## Would you use AI the same way next time? What would you change?
+
+## Testing
+
+I tested the update_game_state function using simple assertions in main.py.
+The tests covered:
+- correct guesses
+- incorrect guesses
+- updating guessed letters
+- decreasing lives when the guess is wrong
+
+All tests passed when running `python main.py`.
