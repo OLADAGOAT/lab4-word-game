@@ -25,3 +25,16 @@ def update_game_state(secret_word: str,
         lives = lives - 1
 
     return new_guessed_letters, lives
+
+if __name__ == "__main__":
+    # test 1: correct guess
+    letters, lives = update_game_state("apple", ["a"], "p", 5)
+    print(letters, lives)   # expected: ['a', 'p'], 5
+
+    # test 2: wrong guess
+    letters, lives = update_game_state("apple", ["a", "p"], "x", 5)
+    print(letters, lives)   # expected: ['a', 'p', 'x'], 4
+
+    # test 3: another correct guess
+    letters, lives = update_game_state("apple", ["a", "p"], "l", 5)
+    print(letters, lives)   # expected: ['a', 'p', 'l'], 5
