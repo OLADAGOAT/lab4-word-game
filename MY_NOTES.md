@@ -1,44 +1,28 @@
 # Word Game Notes
 
 ## App States
-What is the initial state of the game when it first starts? (For example, is there a setup phase where a word is chosen or displayed?)
-
-What happens during the main gameplay loop? (How does the game respond to player inputs, like guesses?)
-
-What are the key decision points that could change the game's behavior? (For instance, when does the game check if a guess is correct, partially correct, or incorrect?)
-
-What are the possible outcomes or endings? (How does the game determine if the player has won, lost, or if there's an intermediate status like "almost there"?)
-
-Are there any pauses, resets, or special modes? (Could the game have states for restarting, pausing, or handling errors?)
+What is the game's condition right at the beginning, before any guesses? (Is there a phase for preparing the word or initializing the display?)
+What state is the game in while the player is actively making guesses? (How does it handle correct and incorrect inputs during this ongoing phase?)
+What happens when the player successfully guesses the entire word? (What state signals a win?)
+What occurs if the player exhausts all allowed wrong guesses without completing the word? (What state indicates a loss?)
+Are there any other transitional or special states? (For example, could there be a pause, restart, or error-handling state?)
 ## App Variables
-What core data does the game need from the very beginning, before any guesses are made? (For example, something fixed that defines the challenge.)
-
-What does the game need to record and update with each player action? (How might it keep track of what the player has tried or revealed?)
-
-Are there any limits or counters that change over time? (What could enforce rules like maximum attempts or time constraints?)
-
-How does the game know its current status? (What might indicate whether it's still in progress, finished, or in a specific phase?)
-
-What about user-specific or session data? (Could there be anything related to the player's identity, score, or preferences?)
+What fixed information defines the core challenge? (For example, something that doesn't change once set.)
+What needs to be updated as the player guesses? (How might you track what letters have been tried or revealed?)
+How do you monitor attempts or limits? (What counts wrong guesses or enforces the maximum allowed?)
+What represents the current game display or progress? (How do you show the word's state to the player?)
+Are there any flags for the game's overall status? (What indicates if it's still active, won, or lost?)
 
 ## App Rules and Invariants
-What aspects of the game should never change once the game begins? (For example, is there something that must stay fixed to keep the challenge intact?)
-
-What constraints should the game place on player inputs or actions? (How might it prevent invalid guesses, like repeating letters or going beyond limits?)
-
-What must the game always check or enforce to ensure it's playable? (For instance, what prevents the game from breaking if something unexpected happens?)
-
-How does the game determine valid progress or outcomes? (What rules ensure that wins, losses, or partial successes are calculated correctly?)
-
-Are there any safety or boundary conditions? (What invariants protect against errors, like negative counters or impossible states?)
+What are the core rules for starting and playing? (For example, how is the secret word chosen, and what constitutes a valid guess?)
+How are correct and incorrect guesses handled? (What happens when a letter is in the word versus not, and how does that affect the display or attempts?)
+What determines the end of the game? (Under what conditions does the player win or lose?)
+What invariants must always be true? (For instance, what can't change or go below zero, and what ensures the game remains fair?)
+Are there rules for special cases? (How does the game handle repeated letters, case sensitivity, or edge scenarios like guessing the whole word at once?)
 
 ## App Bugs
-What could happen if the player enters unexpected input? (For example, how might non-letter characters, empty strings, or overly long guesses break the game?)
-
-How might errors occur in tracking guesses or progress? (What if the game doesn't update variables correctly after each turn, or miscalculates remaining attempts?)
-
-What edge cases exist in the game's logic? (For instance, what happens if the secret word has repeated letters, or if the player guesses the word instantly?)
-
-How could state transitions cause problems? (What if the game doesn't properly switch from "playing" to "won" or "lost," leading to continued play after the game should end?)
-
-What about data integrity? (How might variables become invalid, like negative counters or corrupted word displays?)
+ What could go wrong with player input? (For example, how might non-alphabetic characters, uppercase/lowercase mismatches, or empty inputs break the game?)
+How might tracking guesses fail? (What if the game doesn't properly update or check for already-guessed letters, or miscounts wrong attempts?)
+What edge cases exist in word handling? (For instance, what happens with words containing spaces, hyphens, or repeated letters?)
+How could state transitions cause problems? (What if the game doesn't correctly detect a win/loss, allowing play to continue indefinitely or ending prematurely?)
+What about display or feedback issues? (How might the word reveal incorrectly, or counters go negative/invalid?)
