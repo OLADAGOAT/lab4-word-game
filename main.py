@@ -2,6 +2,7 @@ import random
 
 
 WORDS = ["apple", "banana", "grapes", "peach", "mango"]
+ALPHABET = list("abcdefghijklmnopqrstuvwxyz")
 
 
 def update_game_state(secret_word: str,
@@ -63,8 +64,19 @@ def is_valid_guess(guess: str, guessed_letters: list[str]) -> bool:
     return len(guess) == 1 and guess.isalpha() and guess not in guessed_letters
 
 
+def get_auto_guess(guessed_letters: list[str]) -> str:
+    """Return a letter the computer has not guessed yet."""
+    available_letters = []
+
+    for letter in ALPHABET:
+        if letter not in guessed_letters:
+            available_letters = available_letters + [letter]
+
+    return random.choice(available_letters)
+
+
 def play_game(words: list[str]) -> None:
-    """Run one full game."""
+    """Run one full normal game."""
     secret_word = choose_word(words)
     guessed_letters: list[str] = []
     lives = 6
@@ -93,13 +105,55 @@ def play_game(words: list[str]) -> None:
         print("\nYou lose! The word was:", secret_word)
 
 
+def auto_play_game(words: list[str]) -> None:
+    """Run one full auto-play game."""
+    secret_word = choose_word(words)
+    guessed_letters: list[str] = []
+    lives = 6
+
+    print("\nAuto Play Mode started.")
+
+    while lives > 0 and not is_game_won(secret_word, guessed_letters):
+        print("\nWord:", " ".join(mask_word(secret_word, guessed_letters)))
+        print("Guessed letters:", guessed_letters)
+        print("Incorrect guesses:", get_incorrect_guesses(secret_word, guessed_letters))
+        print("Lives left:", lives)
+
+        guess = get_auto_guess(guessed_letters)
+        print("Computer guesses:", guess)
+
+        guessed_letters, lives = update_game_state(
+            secret_word,
+            guessed_letters,
+            guess,
+            lives
+        )
+
+    if is_game_won(secret_word, guessed_letters):
+        print("\nComputer won! The word was:", secret_word)
+    else:
+        print("\nComputer lost! The word was:", secret_word)
+
+
 def main() -> None:
     """Run the game and support replay."""
     play_again = "y"
 
     while play_again == "y":
-        play_game(WORDS)
-        play_again = input("Play again? (y/n): ").lower()
+        print("\nChoose mode:")
+        print("1. Normal play")
+        print("2. Auto play")
+
+        choice = input("Enter 1 or 2: ")
+
+        if choice == "1":
+            play_game(WORDS)
+        elif choice == "2":
+            auto_play_game(WORDS)
+        else:
+            print("Invalid choice.")
+
+        play_again = input("\nDo you want to start again? (y/n): ").lower()
 
 
 if __name__ == "__main__":

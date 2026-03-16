@@ -26,3 +26,18 @@ How might tracking guesses fail? (What if the game doesn't properly update or ch
 What edge cases exist in word handling? (For instance, what happens with words containing spaces, hyphens, or repeated letters?)
 How could state transitions cause problems? (What if the game doesn't correctly detect a win/loss, allowing play to continue indefinitely or ending prematurely?)
 What about display or feedback issues? (How might the word reveal incorrectly, or counters go negative/invalid?)
+
+## Auto Play Mode Notes
+
+### Goal
+Add a mode where the computer plays the word guessing game automatically.
+
+### Design decisions
+- At the start, ask user to choose normal mode or auto play mode.
+- Auto player chooses letters one by one.
+- Auto player must never guess the same letter twice.
+- After auto play ends, return to main menu.
+
+### Questions
+- Should auto play guess randomly or alphabetically?
+- Should auto play show each step on screen?
